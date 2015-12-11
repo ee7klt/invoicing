@@ -33,13 +33,23 @@ export default class Entry extends React.Component {
     };
   };
 
-  handleSelectChange(newSelect) {
-    this.setState({selectValue: newSelect});
+  textFieldLink = (value) => {
+    return {
+      value: this.state.textFieldValue,
+      requestChange: this.textFieldChange.bind(this),
+    };
   };
 
-  textFieldChange() {
-    this.setState({textFieldValue: this.refs.nameInput.getValue()})
-    console.log(this.state.textFieldValue)
+
+
+  handleSelectChange(newSelect) {
+    this.setState({selectValue: newSelect});
+    console.log(newSelect)
+  };
+
+  textFieldChange(newTextInput) {
+    this.setState({textFieldValue: newTextInput})
+    console.log(newTextInput)
   }
 
   render() {
@@ -58,8 +68,7 @@ export default class Entry extends React.Component {
       <TextField
         hintText="Kim Park Lee"
         floatingLabelText="Student Name"
-        ref = "nameInput"
-        onChange = {this.textFieldChange.bind(this)}
+        valueLink = {this.textFieldLink()}
         />
 
       <SelectField
