@@ -11,6 +11,7 @@ export default class Entry extends React.Component {
     this.state = {
       selectValue: 1,
       textFieldValue: '',
+      dateValue: '',
     }
   }
 
@@ -27,6 +28,7 @@ export default class Entry extends React.Component {
   };
 
   selectStateLink = (value) => {
+      //console.log(this.handleSelectChange)
     return {
       value: this.state.selectValue,
       requestChange: this.handleSelectChange.bind(this),
@@ -34,22 +36,35 @@ export default class Entry extends React.Component {
   };
 
   textFieldLink = (value) => {
+  //  console.log(this.textFieldChange)
     return {
       value: this.state.textFieldValue,
       requestChange: this.textFieldChange.bind(this),
     };
   };
 
+  dateLink = (value) => {
+    console.log(this.dateChange)
+    return {
+      value: this.state.dateValue,
+      requestChange: this.dateChange.bind(this),
+    }
+  }
 
 
   handleSelectChange(newSelect) {
     this.setState({selectValue: newSelect});
     console.log(newSelect)
-  };
+  }
 
   textFieldChange(newTextInput) {
     this.setState({textFieldValue: newTextInput})
-    console.log(newTextInput)
+    console.log()
+  }
+
+  dateChange(newDate) {
+    this.setState({dateValue: newDate})
+    console.log(newDate)
   }
 
   render() {
@@ -81,11 +96,20 @@ export default class Entry extends React.Component {
       <DatePicker
         hintText="Select a Date"
         container="inline"
-        autoOk={true} />
+        autoOk={true}
+        valueLink = {this.dateLink}
+        />
 
       <RaisedButton label="Default" onClick = {this.handleClick} />
-      {this.state.textFieldValue}
 
+    <hr />
+    <div>
+    <ul>
+      <li>{this.state.textFieldValue}</li>
+      <li>  {this.state.selectValue}</li>
+      <li> {this.state.dateValue}</li>
+    </ul>
+</div>
     </div>
   }
 }
