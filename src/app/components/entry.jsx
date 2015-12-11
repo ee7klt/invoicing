@@ -8,7 +8,10 @@ export default class Entry extends React.Component {
 
   constructor() {
     super()
-    this.state = {selectValue: 1}
+    this.state = {
+      selectValue: 1,
+      textFieldValue: '',
+    }
   }
 
 
@@ -35,7 +38,8 @@ export default class Entry extends React.Component {
   };
 
   textFieldChange() {
-
+    this.setState({textFieldValue: this.refs.nameInput.getValue()})
+    console.log(this.state.textFieldValue)
   }
 
   render() {
@@ -71,6 +75,7 @@ export default class Entry extends React.Component {
         autoOk={true} />
 
       <RaisedButton label="Default" onClick = {this.handleClick} />
+      {this.state.textFieldValue}
 
     </div>
   }
