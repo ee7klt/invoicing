@@ -5,9 +5,17 @@ import {DatePicker, TextField, SelectField, RaisedButton} from 'material-ui';
 export default class Entry extends React.Component {
 
 
-  state = {
-    selectValue: 1,
-  };
+
+  constructor() {
+    super()
+    this.state = {selectValue: 1}
+  }
+
+
+  // state = {
+  //   selectValue: 1,
+  //
+  // };
 
 
 
@@ -24,6 +32,10 @@ export default class Entry extends React.Component {
 
   handleSelectChange(newSelect) {
     this.setState({selectValue: newSelect});
+  };
+
+  textFieldChange() {
+
   }
 
   render() {
@@ -36,13 +48,14 @@ export default class Entry extends React.Component {
     ];
 
 
-
+    //console.log(this.refs.nameInput.getValue())
     return <div>
       <h2>This is entry</h2>
       <TextField
         hintText="Kim Park Lee"
         floatingLabelText="Student Name"
         ref = "nameInput"
+        onChange = {this.textFieldChange.bind(this)}
         />
 
       <SelectField
@@ -53,11 +66,12 @@ export default class Entry extends React.Component {
         menuItems={arbitraryArrayMenuItems} />
 
       <DatePicker
-        hintText="Inline (AutoOk)"
+        hintText="Select a Date"
         container="inline"
         autoOk={true} />
 
       <RaisedButton label="Default" onClick = {this.handleClick} />
+
     </div>
   }
 }
