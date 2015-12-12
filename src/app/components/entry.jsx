@@ -45,24 +45,21 @@ export default class Entry extends React.Component {
   };
 
   datePickerChange() {
-
-
-
     this.setState({
         dateValue: this.refs.datePickerValue.getDate(),
     })
-
-
-
   }
 
   formatDateTime (value) {
-    const dateTimeFormatted = new DateTime.DateTimeFormat('en-US', {
-      month: 'short',
-      weekday: 'short',
-      day: '2-digit',
-    }).format(value);
-    return dateTimeFormatted.toString()
+    if (value !== '') {
+      let dateTimeFormatted = new DateTime.DateTimeFormat('en-US', {
+        year: 'long',
+        month: 'short',
+        weekday: 'short',
+        day: '2-digit',
+      }).format(value);
+      return dateTimeFormatted.toString()
+    } 
   }
 
 
@@ -78,6 +75,11 @@ export default class Entry extends React.Component {
 
 
   render() {
+    //console.log(this.formatDateTime(this.state.dateValue))
+    let date = this.formatDateTime(this.state.dateValue)
+    console.log(date)
+
+
     let arbitraryArrayMenuItems = [
       {id:1, name:'0.5 hrs'},
       {id:2, name:'1.0 hrs'},
@@ -118,7 +120,9 @@ export default class Entry extends React.Component {
     <ul>
       <li>{this.state.textFieldValue}</li>
       <li>  {this.state.selectValue}</li>
-      <li>{this.formatDateTime(this.state.dateValue)}</li>
+      <li>{date}</li>
+
+
 
 
     </ul>
