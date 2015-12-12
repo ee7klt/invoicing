@@ -36,19 +36,20 @@ export default class Entry extends React.Component {
   };
 
   textFieldLink = (value) => {
-  //  console.log(this.textFieldChange)
+    //console.log(this.textFieldChange)
     return {
       value: this.state.textFieldValue,
       requestChange: this.textFieldChange.bind(this),
     };
   };
 
-  dateLink = (value) => {
-    console.log(this.dateChange)
-    return {
-      value: this.state.dateValue,
-      requestChange: this.dateChange.bind(this),
-    }
+  datePickerChange() {
+    this.setState({
+        dateValue: this.refs.datePickerValue.getDate(),
+    })
+
+    console.log(this.state.dateValue)
+
   }
 
 
@@ -62,10 +63,6 @@ export default class Entry extends React.Component {
     console.log()
   }
 
-  dateChange(newDate) {
-    this.setState({dateValue: newDate})
-    console.log(newDate)
-  }
 
   render() {
     let arbitraryArrayMenuItems = [
@@ -97,7 +94,8 @@ export default class Entry extends React.Component {
         hintText="Select a Date"
         container="inline"
         autoOk={true}
-        valueLink = {this.dateLink}
+        ref = "datePickerValue"
+        onChange = {this.datePickerChange.bind(this)}
         />
 
       <RaisedButton label="Default" onClick = {this.handleClick} />
@@ -107,7 +105,7 @@ export default class Entry extends React.Component {
     <ul>
       <li>{this.state.textFieldValue}</li>
       <li>  {this.state.selectValue}</li>
-      <li> {this.state.dateValue}</li>
+
     </ul>
 </div>
     </div>
