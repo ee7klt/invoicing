@@ -1,5 +1,6 @@
 import React from 'react';
 import {DatePicker, TextField, SelectField, RaisedButton} from 'material-ui';
+import DateTime from 'material-ui/lib/utils/date-time';
 
 
 export default class Entry extends React.Component {
@@ -44,12 +45,24 @@ export default class Entry extends React.Component {
   };
 
   datePickerChange() {
+
+
+
     this.setState({
         dateValue: this.refs.datePickerValue.getDate(),
     })
 
-    console.log(this.state.dateValue)
 
+
+  }
+
+  formatDateTime (value) {
+    const dateTimeFormatted = new DateTime.DateTimeFormat('en-US', {
+      month: 'short',
+      weekday: 'short',
+      day: '2-digit',
+    }).format(value);
+    return dateTimeFormatted.toString()
   }
 
 
@@ -105,6 +118,8 @@ export default class Entry extends React.Component {
     <ul>
       <li>{this.state.textFieldValue}</li>
       <li>  {this.state.selectValue}</li>
+      <li>{this.formatDateTime(this.state.dateValue)}</li>
+
 
     </ul>
 </div>
