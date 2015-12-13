@@ -1,5 +1,5 @@
 import React from 'react';
-import {DatePicker, TextField, SelectField, RaisedButton} from 'material-ui';
+import {DatePicker, SelectField, RaisedButton} from 'material-ui';
 import DateTime from 'material-ui/lib/utils/date-time';
 
 
@@ -11,7 +11,6 @@ export default class Entry extends React.Component {
     super()
     this.state = {
       selectValue: 1,
-      textFieldValue: '',
       dateValue: '',
     }
   }
@@ -36,13 +35,7 @@ export default class Entry extends React.Component {
     };
   };
 
-  textFieldLink = (value) => {
-    //console.log(this.textFieldChange)
-    return {
-      value: this.state.textFieldValue,
-      requestChange: this.textFieldChange.bind(this),
-    };
-  };
+
 
   datePickerChange() {
     this.setState({
@@ -59,7 +52,7 @@ export default class Entry extends React.Component {
         day: '2-digit',
       }).format(value);
       return dateTimeFormatted.toString()
-    } 
+    }
   }
 
 
@@ -68,10 +61,6 @@ export default class Entry extends React.Component {
     console.log(newSelect)
   }
 
-  textFieldChange(newTextInput) {
-    this.setState({textFieldValue: newTextInput})
-    console.log()
-  }
 
 
   render() {
@@ -91,12 +80,8 @@ export default class Entry extends React.Component {
 
     //console.log(this.refs.nameInput.getValue())
     return <div>
-      <h2>This is entry</h2>
-      <TextField
-        hintText="Kim Park Lee"
-        floatingLabelText="Student Name"
-        valueLink = {this.textFieldLink()}
-        />
+  
+
 
       <SelectField
         valueLink = {this.selectStateLink()}
@@ -118,7 +103,7 @@ export default class Entry extends React.Component {
     <hr />
     <div>
     <ul>
-      <li>{this.state.textFieldValue}</li>
+
       <li>  {this.state.selectValue}</li>
       <li>{date}</li>
 
