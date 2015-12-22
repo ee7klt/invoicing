@@ -1,5 +1,5 @@
 import React from 'react';
-import {DatePicker, SelectField, RaisedButton} from 'material-ui';
+import {DatePicker, SelectField} from 'material-ui';
 import DateTime from 'material-ui/lib/utils/date-time';
 
 
@@ -23,9 +23,7 @@ export default class Entry extends React.Component {
 
 
 
-  handleClick() {
-    console.log("button clicked")
-  };
+
 
   selectStateLink = (value) => {
       //console.log(this.handleSelectChange)
@@ -80,7 +78,7 @@ export default class Entry extends React.Component {
 
     //console.log(this.refs.nameInput.getValue())
     return <div>
-  
+
 
 
       <SelectField
@@ -98,7 +96,7 @@ export default class Entry extends React.Component {
         onChange = {this.datePickerChange.bind(this)}
         />
 
-      <RaisedButton label="Default" onClick = {this.handleClick} />
+
 
     <hr />
     <div>
