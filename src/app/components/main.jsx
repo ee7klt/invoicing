@@ -9,15 +9,20 @@ import Student from './student.jsx';
 import {RaisedButton} from 'material-ui';
 
 
-export default () => {
+export default class Main extends React.Component {
 
+handleClick() {
+  console.log("button clicked")
+}
 
+render() {
+    return <div>
+      <Header />
+      <Student />
+      <Entry />
+      <Entry />
+      <RaisedButton label="Default" onClick = {this.handleClick} />
+    </div>
 
-  return <div>
-    <Header />
-    <Student />
-    <Entry />
-    <Entry />
-    <RaisedButton label="Default" onClick = {this.handleClick} />
-  </div>
+}
 }
