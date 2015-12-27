@@ -12,8 +12,6 @@ export default class Entry extends React.Component {
     this.state = {
       selectValue: 1,
       dateValue: '',
-      selectValueArr: [],
-      dateValueArr: [],
     }
   }
 

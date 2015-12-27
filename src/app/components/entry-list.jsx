@@ -15,7 +15,7 @@ export default class EntryList extends React.Component {
     console.log("button clicked")
 
     this.props.items.push(<Entry />)
-    console.log(this.props.items)
+    //console.log(this.props.items)
     this.setState({item:''})
 
   }
