@@ -5,23 +5,33 @@
 import React from 'react';
 import Header from './header.jsx';
 import Entry from './entry.jsx';
+import EntryList from './entry-list.jsx';
 import Student from './student.jsx';
-import {RaisedButton} from 'material-ui';
+
 
 
 export default class Main extends React.Component {
 
-handleClick() {
-  console.log("button clicked")
-}
+
+  constructor() {
+    super()
+    this.state = {
+      items: [1,2,3],
+    }
+  }
+
+
+
 
 render() {
+
+
     return <div>
       <Header />
       <Student />
-      <Entry />
-      <Entry />
-      <RaisedButton label="Default" onClick = {this.handleClick} />
+  
+      <EntryList items = {this.state.items} />
+
     </div>
 
 }
